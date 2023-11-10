@@ -1,4 +1,4 @@
-import NewPacenoteForm from "@/components/NewPacenoteForm"
+import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import React from "react"
 
 interface MyComponentProps {}
