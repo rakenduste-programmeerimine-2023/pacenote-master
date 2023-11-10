@@ -1,3 +1,30 @@
+# Wireframe Screenshotid ja funktsionaalsused
+
+## Login/Register
+![alt text for screen readers](WireframeScreenshots/Login.png "Text to show on mouseover")
+Selles vaates saab kasutaja sisse logida, mille jaoks on tal vaja usernamei ja passwordi, juhul kui kasutaja pole veel kontot loonud saab ta ennast kasutajaks registreerida ja selleks on vajalik ka email. (Login ja Register vaated on muidu eraldi aga kuna tegemist sarnaste vaadetega siis tegime vaid ühe vaate)
+
+## Peamenüü
+![alt text for screen readers](WireframeScreenshots/Home.png "Text to show on mouseover")
+Peamenüü vaade avaneb peale sisselogimist ja selles on kasutajal kolm valikut: saab uusi Pacenote teha, saab tehtud Pacenote vaadata ja n-ö selle lehe peafunktsiooni kasutada ning kolmandaks saab profiili vaadata ja muuta enda andmeid. Potensiaalselt on peamenüü koht kuhu tuleb mingi väline API päring.
+
+## Create new
+![alt text for screen readers](WireframeScreenshots/CreateNew.png "Text to show on mouseover")
+Create new vaates saab kasutaja luua uusi pacenote, selleks peab valima vajalikud märkmed, mis on pildi all osas märgitud Left, Modifiers ja Right, siis nendest paremale jäävas kastis saab lisada veel märkmeid ja lõpuks kui vajutada Add nupule ilmub see note ekraani keskel olevasse kasti ja siis kui kõik pacenoteid on tehtud tuleb vajutada Finish nuppu ja see salvestab tehtud töö.
+
+## My Pacenotes
+![alt text for screen readers](WireframeScreenshots/MyPacenotes.png "Text to show on mouseover")
+Selles vaates on näha mis Pacenote kasutaja teinud on ja kui mingile Pacenote'ile peale vajutada tekib järgmine vaade.
+
+## View Pacenotes
+![alt text for screen readers](WireframeScreenshots/ViewPacenote.png "Text to show on mouseover")
+See vaade ongi siis selle lehe põhifunktsioon, nimelt kui eelmisest vaatest valisid millist pacenote vaadata tahad siis siin see avaneb. Täpsemalt on siis lehe keskel note mida kaardilugeja ütlema peab, sellest paremale jääb väiksemalt järgmine note, mis liigub lehe keskele kui vajutada edasi noolt ja samamoodi näeb lehe vasakult poolt just olnud note ja nendeni saab ka liikuda vajutades tagasi noolt.
+
+## Profile
+![alt text for screen readers](WireframeScreenshots/Profile.png "Text to show on mouseover")
+Profile vaates saab näha enda kasutajat ja muuta andmeid enda kohta.
+
+
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
   <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
   <h1 align="center">Next.js and Supabase Starter Kit</h1>
