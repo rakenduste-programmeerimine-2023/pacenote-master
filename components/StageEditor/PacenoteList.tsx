@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 
-const PacenoteList = () => {
-    const [items, setItems] = useState([
+const PacenoteList = ({}) => {
+
+
+    const [pacenotes, setPacenotes] = useState([
         {
-            action: "R6",
+            Action: "R6",
             Cut: true,
             DontCut: false,
             Caution: false,
@@ -14,7 +16,7 @@ const PacenoteList = () => {
             notes: "Keep in"
         },
         {
-            action: "L2",
+            Action: "L2",
             Cut: false,
             DontCut: true,
             Caution: false,
@@ -24,7 +26,7 @@ const PacenoteList = () => {
             notes: "Tree inside"
         },
         {
-            action: "L4",
+            Action: "L4",
             Cut: false,
             DontCut: false,
             Caution: true,
@@ -52,16 +54,16 @@ const PacenoteList = () => {
     ) => {
         e.preventDefault();
         const draggedIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
-        const newItems = [...items];
+        const newItems = [...pacenotes];
         const [draggedItem] = newItems.splice(draggedIndex, 1);
         newItems.splice(newIndex, 0, draggedItem);
-        setItems(newItems);
+        setPacenotes(newItems);
     };
 
     return (
         <div>
             <ul>
-                {items.map((item, index) => (
+                {pacenotes.map((pacenote, index) => (
                     <li
                         key={index}
                         draggable
@@ -69,14 +71,14 @@ const PacenoteList = () => {
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
-                        <span>{item.action} </span>
-                        <input type="checkbox" checked={item.Cut} readOnly /> 
-                        <input type="checkbox" checked={item.DontCut} readOnly /> 
-                        <input type="checkbox" checked={item.Caution} readOnly /> 
-                        <input type="checkbox" checked={item.Danger} readOnly /> 
-                        <input type="checkbox" checked={item.Widens} readOnly /> 
-                        <input type="checkbox" checked={item.Tightens} readOnly /> 
-                        <span>{item.notes} </span>
+                        <span>{pacenote.Action} </span>
+                        <input type="checkbox" checked={pacenote.Cut} readOnly /> 
+                        <input type="checkbox" checked={pacenote.DontCut} readOnly /> 
+                        <input type="checkbox" checked={pacenote.Caution} readOnly /> 
+                        <input type="checkbox" checked={pacenote.Danger} readOnly /> 
+                        <input type="checkbox" checked={pacenote.Widens} readOnly /> 
+                        <input type="checkbox" checked={pacenote.Tightens} readOnly /> 
+                        <span>{pacenote.notes} </span>
                     </li>
                 ))}
             </ul>
