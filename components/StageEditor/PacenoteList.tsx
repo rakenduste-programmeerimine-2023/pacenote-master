@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const DraggableList = () => {
+const PacenoteList = () => {
     const [items, setItems] = useState([
         {
             action: "R6",
@@ -84,4 +84,4 @@ const DraggableList = () => {
     );
 };
 
-export default DraggableList;
+export default PacenoteList;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface MyComponentProps {
+interface IndexPage {
 
 }
 
-const MyComponent: React.FC<MyComponentProps> = (props) => {
+const IndexPage: React.FC<IndexPage> = (props) => {
 
 
   return (
@@ -13,3 +13,4 @@ const MyComponent: React.FC<MyComponentProps> = (props) => {
     </div>
   )
 }
+export default IndexPage;
