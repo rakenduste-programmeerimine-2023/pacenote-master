@@ -53,7 +53,6 @@ const StageEditor: React.FC<StageEditorProps> = props => {
           formData.Tightens,
           formData.notes
         );
-        console.log("handleFormSubmit: ", newPacenotes)
         // Update the pacenotes state
         setPacenotes(newPacenotes);
       };
