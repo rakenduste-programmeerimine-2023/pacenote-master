@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 interface NewPacenoteFormProps {
-  onSubmit: (formData: any) => void; // Adjust the type accordingly
+  onSubmit: (formData: any) => void;
 }
 
 const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
