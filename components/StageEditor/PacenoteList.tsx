@@ -1,41 +1,36 @@
-"use client";
+
 import React, { useState } from "react";
 
-const PacenoteList = ({}) => {
+
+    interface PacenoteListProps {
+        pacenotes: {
+            Action: string;
+            Cut: boolean;
+            DontCut: boolean;
+            Caution: boolean;
+            Danger: boolean;
+            Widens: boolean;
+            Tightens: boolean;
+            Notes: string;
+        }[];
+        setPacenotes: React.Dispatch<
+        React.SetStateAction<{
+          Action: string;
+          Cut: boolean;
+          DontCut: boolean;
+          Caution: boolean;
+          Danger: boolean;
+          Widens: boolean;
+          Tightens: boolean;
+          Notes: string;
+        }[]>
+      >;
+    }
+  
+  const PacenoteList: React.FC<PacenoteListProps> = ({ pacenotes, setPacenotes }) => {
 
 
-    const [pacenotes, setPacenotes] = useState([
-        {
-            Action: "R6",
-            Cut: true,
-            DontCut: false,
-            Caution: false,
-            Danger: false,
-            Widens: false,
-            Tightens: true,
-            notes: "Keep in"
-        },
-        {
-            Action: "L2",
-            Cut: false,
-            DontCut: true,
-            Caution: false,
-            Danger: false,
-            Widens: true,
-            Tightens: false,
-            notes: "Tree inside"
-        },
-        {
-            Action: "L4",
-            Cut: false,
-            DontCut: false,
-            Caution: true,
-            Danger: true,
-            Widens: false,
-            Tightens: false,
-            notes: "Uneven terrain"
-        }
-    ]);
+
 
     const handleDragStart = (
         e: React.DragEvent<HTMLLIElement>,
@@ -78,12 +73,11 @@ const PacenoteList = ({}) => {
                         <input type="checkbox" checked={pacenote.Danger} readOnly /> 
                         <input type="checkbox" checked={pacenote.Widens} readOnly /> 
                         <input type="checkbox" checked={pacenote.Tightens} readOnly /> 
-                        <span>{pacenote.notes} </span>
+                        <span>{pacenote.Notes} </span>
                     </li>
                 ))}
             </ul>
         </div>
     );
 };
-
 export default PacenoteList;

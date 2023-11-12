@@ -1,8 +1,11 @@
-"use client";
+
 import React, { useState } from 'react';
 
+interface NewPacenoteFormProps {
+  onSubmit: (formData: any) => void; // Adjust the type accordingly
+}
 
-const NewPacenoteForm = () => {
+const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
       action: '',
       notes: '',
@@ -16,23 +19,21 @@ const NewPacenoteForm = () => {
   
     // Handle form submission
     const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-    
-    
-      // Log form data to the console
-      console.log(formData);
-    
+        e.preventDefault();
 
-      setFormData({
-        action: '',
-        notes: '',
-        Cut: false,
-        DontCut: false,
-        Caution: false,
-        Danger: false,
-        Tightens: false,
-        Widens: false,
-      });
+        // Send form submit to parent
+        onSubmit(formData);
+        
+        setFormData({
+          action: '',
+          notes: '',
+          Cut: false,
+          DontCut: false,
+          Caution: false,
+          Danger: false,
+          Tightens: false,
+          Widens: false,
+        });
     };
   
   return (
