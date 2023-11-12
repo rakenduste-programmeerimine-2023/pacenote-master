@@ -21,7 +21,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Send form submit to parent
+        // Send form submit data to parent
         onSubmit(formData);
         
         setFormData({
@@ -35,6 +35,9 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
           Widens: false,
         });
     };
+
+  // Check if any radio button is selected
+  const isRadioSelected = Object.values(formData).some((value) => typeof value === 'string' && value !== '');
   
   return (
     <div>
@@ -86,7 +89,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
             <label><input type="checkbox" name="Widens" value="true" checked={formData.Widens} onChange={(e) => setFormData({ ...formData, Widens: e.target.checked })} /> Widens</label>
   
             {/* Submit */}
-            <button type="submit">Add</button>
+            <button type="submit" disabled={!isRadioSelected}>Add</button>
         </form>
     </div>
   );
