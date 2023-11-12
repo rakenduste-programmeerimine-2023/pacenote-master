@@ -81,6 +81,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
             <h1>Stage editor</h1>
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes} />
             <NewPacenoteForm  onSubmit={handleFormSubmit} />
+            <button type="submit">Finish</button>
         </div>
     )
 }
