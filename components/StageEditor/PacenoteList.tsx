@@ -17,7 +17,7 @@ import React, { useState } from "react";
         React.SetStateAction<{
           action: string;
           cut: boolean;
-          DontCut: boolean;
+          dontcut: boolean;
           caution: boolean;
           danger: boolean;
           widens: boolean;
