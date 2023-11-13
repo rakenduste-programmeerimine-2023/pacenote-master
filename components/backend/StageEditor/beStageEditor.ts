@@ -5,7 +5,7 @@ import { cookies } from "next/headers"
     export const SaveStageToDB = async (pacenotes: any[], stageID: number) => {
         const cookieStore = cookies()
         const supabase = createClient(cookieStore)
-        // Use Promise.all to wait for all insert operations to complete
+
         const SaveStage = pacenotes.map(async pacenote => {
             const { data, error } = await supabase
                 .from("pacenotes")

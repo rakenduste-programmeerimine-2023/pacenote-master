@@ -3,11 +3,29 @@ import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import PacenoteList from "@/components/StageEditor/PacenoteList"
 import { SaveStageToDB } from "@/components/backend/StageEditor/beStageEditor"
 import React, { useState, useEffect } from "react"
+import { useSearchParams } from 'next/navigation'
+
+
 import Test from "@/components/backend/StageEditor/test"
 
 interface StageEditorProps {}
 
+interface Pacenote {
+  Action: any;
+  Cut: any;
+  DontCut: any;
+  Caution: any;
+  Danger: any;
+  Widens: any;
+  Tightens: any;
+  Notes: any;
+}
+
 const StageEditor: React.FC<StageEditorProps> = props => {
+    const searchParams = useSearchParams()
+    const stageID = searchParams.get('stage')
+
+
     /*const [testData, setTestData] = useState<string | null>(null)
 
     useEffect(() => {
@@ -25,18 +43,8 @@ const StageEditor: React.FC<StageEditorProps> = props => {
         fetchData()
     }, [])*/
 
-    const [pacenotes, setPacenotes] = useState([
-        {
-            Action: "R6",
-            Cut: true,
-            DontCut: false,
-            Caution: false,
-            Danger: false,
-            Widens: false,
-            Tightens: true,
-            Notes: "Keep in"
-        }
-    ])
+    const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
+
 
     const HandleAddNewPacenoteToList = (newPacenoteFromForm: any) => {
       setPacenotes(pacenotes => [
@@ -55,7 +63,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
   }
 
     const HandleFinishButtonClick = async () => {
-        SaveStageToDB(pacenotes, 1)
+        SaveStageToDB(pacenotes, Number(stageID))
     }
 
     return (
