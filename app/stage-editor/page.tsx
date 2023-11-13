@@ -27,7 +27,9 @@ const StageEditor: React.FC<StageEditorProps> = props => {
 
     const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
 
-    /*const [testData, setTestData] = useState<string | null>(null)*/
+    useEffect(() => {
+      document.title = 'Stage Editor';
+    }, []);
 
     useEffect(() => {
       const LoadStage = async () => {
