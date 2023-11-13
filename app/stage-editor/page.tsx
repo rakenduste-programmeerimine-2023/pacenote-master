@@ -32,7 +32,6 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     useEffect(() => {
       const LoadStage = async () => {
         const result = await LoadStageFromDB(Number(stageID));
-        console.log(result)
         if (result !== null){
           setPacenotes(result as Pacenote[]);
         }

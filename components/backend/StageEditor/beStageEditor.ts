@@ -31,8 +31,6 @@ export const SaveStageToDB = async (pacenotes: any[], stageID: number) => {
     })
     // Wait for all insert operations to complete
     const results = await Promise.all(SaveStage)
-    // results now contains the data or null for each insert operation
-    console.log(results)
 }
 
 export const LoadStageFromDB = async (stageID: number) => {
