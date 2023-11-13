@@ -1,7 +1,7 @@
 "use client"
 import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import PacenoteList from "@/components/StageEditor/PacenoteList"
-import { SaveStageToDB } from "@/components/backend/StageEditor/beStageEditor"
+import { SaveStageToDB, LoadStageFromDB } from "@/components/backend/StageEditor/beStageEditor"
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 
@@ -25,26 +25,22 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     const searchParams = useSearchParams()
     const stageID = searchParams.get('stage')
 
-
-    /*const [testData, setTestData] = useState<string | null>(null)
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const testResult = await Test()
-                console.log("Test result: ", testResult)
-
-                setTestData(testResult)
-            } catch (error) {
-                console.error("Error fetching test data:", error)
-            }
-        }
-
-        fetchData()
-    }, [])*/
-
     const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
 
+    /*const [testData, setTestData] = useState<string | null>(null)*/
+
+    useEffect(() => {
+      const LoadStage = async () => {
+        const result = await LoadStageFromDB(Number(stageID));
+        console.log(result)
+        if (result !== null){
+          setPacenotes(result as Pacenote[]);
+        }
+      };
+      if (stageID !== null){
+        LoadStage();
+      }
+    }, [stageID])
 
     const HandleAddNewPacenoteToList = (newPacenoteFromForm: any) => {
       setPacenotes(pacenotes => [
@@ -65,6 +61,8 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     const HandleFinishButtonClick = async () => {
         SaveStageToDB(pacenotes, Number(stageID))
     }
+
+
 
     return (
         <div>
