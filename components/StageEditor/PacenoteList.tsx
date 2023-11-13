@@ -47,6 +47,7 @@ import React, { useState } from "react";
         e: React.DragEvent<HTMLLIElement>,
         newIndex: number
     ) => {
+
         e.preventDefault();
         const draggedIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
         const newItems = [...pacenotes];

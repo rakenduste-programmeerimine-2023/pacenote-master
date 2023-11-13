@@ -1,11 +1,31 @@
 "use client";
 import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import PacenoteList from "@/components/StageEditor/PacenoteList"
-import React, { useState } from "react";
+import { SaveStageToDB } from "@/components/backend/StageEditor/beStageEditor";
+import Test from "@/components/backend/StageEditor/test"
+import React, { useState, useEffect } from "react";
 
 interface StageEditorProps {}
 
 const StageEditor: React.FC<StageEditorProps> = props => {
+
+  const [testData, setTestData] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const testResult = await Test();
+        console.log("Test result: ", testResult);
+
+        setTestData(testResult);
+      } catch (error) {
+        console.error('Error fetching test data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
     const [pacenotes, setPacenotes] = useState([
         {
@@ -17,33 +37,10 @@ const StageEditor: React.FC<StageEditorProps> = props => {
             Widens: false,
             Tightens: true,
             Notes: "Keep in"
-        },
-        {
-            Action: "L2",
-            Cut: false,
-            DontCut: true,
-            Caution: false,
-            Danger: false,
-            Widens: true,
-            Tightens: false,
-            Notes: "Tree inside"
-        },
-        {
-            Action: "L4",
-            Cut: false,
-            DontCut: false,
-            Caution: true,
-            Danger: true,
-            Widens: false,
-            Tightens: false,
-            Notes: "Uneven terrain"
-        }
-    ]);
+        }]);
 
     const handleFormSubmit = (formData: any) => {
-        // Add new pacenote using the AddNewPacenote function or directly modify the state
-        // Example using your existing AddNewPacenote function
-        const newPacenotes = AddNewPacenote(
+        const newPacenotes = AddNewPacenoteToList(
           formData.action,
           formData.Cut,
           formData.DontCut,
@@ -53,12 +50,16 @@ const StageEditor: React.FC<StageEditorProps> = props => {
           formData.Tightens,
           formData.notes
         );
-        // Update the pacenotes state
         setPacenotes(newPacenotes);
       };
 
+      const handleFinishButtonClick = async () => {
+        SaveStageToDB(pacenotes, 1)
+      };
+
+
         // Function to add new pacenote
-        const AddNewPacenote = (action: string, cut: boolean, dontCut: boolean, caution: boolean, danger: boolean, widens: boolean, tightens: boolean, notes: string) => {
+        const AddNewPacenoteToList = (action: string, cut: boolean, dontCut: boolean, caution: boolean, danger: boolean, widens: boolean, tightens: boolean, notes: string) => {
             const newPacenotes = [
                 ...pacenotes,
                 {
@@ -78,9 +79,13 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     return (
         <div>
             <h1>Stage editor</h1>
+            <h1>Your Page</h1>
+            {testData && (
+              <pre>{testData}</pre>
+            )}
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes} />
             <NewPacenoteForm  onSubmit={handleFormSubmit} />
-            <button type="submit">Finish</button>
+            <button type="submit" onClick={handleFinishButtonClick}>Finish</button>
         </div>
     )
 }
