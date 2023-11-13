@@ -78,7 +78,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
             <label><input type="radio" name="action" value="Watersplash" checked={formData.action === 'Watersplash'} onChange={(e) => setFormData({ ...formData, action: e.target.value })}/> Watersplash</label>
 
             {/* notes */}
-            <label>Additional notes: <input type="text" name="Aotes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
+            <label>Additional notes: <input type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
             
             {/* Modifiers */}
             <label><input type="checkbox" name="cut" value="true" checked={formData.cut} onChange={(e) => setFormData({ ...formData, cut: e.target.checked })} /> cut</label>

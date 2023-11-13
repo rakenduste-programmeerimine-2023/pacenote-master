@@ -11,14 +11,14 @@ import Test from "@/components/backend/StageEditor/test"
 interface StageEditorProps {}
 
 interface Pacenote {
-  Action: any;
-  Cut: any;
-  DontCut: any;
-  Caution: any;
-  Danger: any;
-  Widens: any;
-  Tightens: any;
-  Notes: any;
+  action: string;
+  cut: boolean;
+  dontcut: boolean;
+  caution: boolean;
+  danger: boolean;
+  widens: boolean;
+  tightens: boolean;
+  notes: string;
 }
 
 const StageEditor: React.FC<StageEditorProps> = props => {
@@ -41,18 +41,18 @@ const StageEditor: React.FC<StageEditorProps> = props => {
       }
     }, [stageID])
 
-    const HandleAddNewPacenoteToList = (newPacenoteFromForm: any) => {
+    const HandleAddNewPacenoteToList = (newPacenoteFromForm: Pacenote) => {
       setPacenotes(pacenotes => [
           ...pacenotes,
           {
-              Action: newPacenoteFromForm.Action,
-              Cut: newPacenoteFromForm.Cut,
-              DontCut: newPacenoteFromForm.DontCut,
-              Caution: newPacenoteFromForm.Caution,
-              Danger: newPacenoteFromForm.Danger,
-              Widens: newPacenoteFromForm.Widens,
-              Tightens: newPacenoteFromForm.Tightens,
-              Notes: newPacenoteFromForm.Notes
+              action: newPacenoteFromForm.action,
+              cut: newPacenoteFromForm.cut,
+              dontcut: newPacenoteFromForm.dontcut,
+              caution: newPacenoteFromForm.caution,
+              danger: newPacenoteFromForm.danger,
+              widens: newPacenoteFromForm.widens,
+              tightens: newPacenoteFromForm.tightens,
+              notes: newPacenoteFromForm.notes
           }
       ]);
   }
