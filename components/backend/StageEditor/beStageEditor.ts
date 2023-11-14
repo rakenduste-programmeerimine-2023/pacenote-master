@@ -11,13 +11,17 @@ export const SaveStageToDB = async (
 
     if (stageID === null){
         stageID = await CreateNewStage();
+    } else {
+        await DeletePacenotesFromStage(stageID);
     }
 
-    const SaveStage = pacenotes.map(async pacenote => {
+    const SaveStage = pacenotes.map(async (pacenote, index) => {
+        const order = index + 1;
         const { data, error } = await supabase
             .from("pacenotes")
             .insert([
                 {
+                    order: order,
                     action: pacenote["action"],
                     notes: pacenote["notes"],
                     cut: pacenote["cut"],
@@ -49,7 +53,7 @@ export const LoadStageFromDB = async (stageID: number | null) => {
             .from("pacenotes")
             .select("*")
             .eq("stage_id", stageID)
-            .order("id", { ascending: true })
+            .order("order", { ascending: true })
 
         if (error) {
             console.error("Error loading pacenotes:", error)
@@ -93,3 +97,24 @@ export const CreateNewStage = async () => {
     }
     return stageID
 }
+
+export const DeletePacenotesFromStage = async (stageID: Number) => {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
+    try {
+        const { data, error } = await supabase
+            .from("pacenotes")
+            .delete()
+            .eq("stage_id", stageID);
+
+        if (error) {
+            console.error("Error deleting pacenotes:", error);
+            return null;
+        }
+        return data;
+    } catch (error) {
+        console.error("Error deleting pacenotes:", error);
+        return null;
+    }
+};
