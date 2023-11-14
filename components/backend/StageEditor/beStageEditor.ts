@@ -2,22 +2,30 @@
 import { createClient } from "@/utils/supabase/server"
 import { cookies } from "next/headers"
 
-export const SaveStageToDB = async (pacenotes: any[], stageID: number) => {
+export const SaveStageToDB = async (
+    pacenotes: any[],
+    stageID: number | null
+) => {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
+
+    if (stageID === null){
+        stageID = await CreateNewStage();
+    }
+
     const SaveStage = pacenotes.map(async pacenote => {
         const { data, error } = await supabase
             .from("pacenotes")
             .insert([
                 {
-                    action: pacenote["Action"],
-                    notes: pacenote["Notes"],
-                    cut: pacenote["Cut"],
-                    dontcut: pacenote["DontCut"],
-                    caution: pacenote["Caution"],
-                    danger: pacenote["Danger"],
-                    widens: pacenote["Widens"],
-                    tightens: pacenote["Tightens"],
+                    action: pacenote["action"],
+                    notes: pacenote["notes"],
+                    cut: pacenote["cut"],
+                    dontcut: pacenote["dontcut"],
+                    caution: pacenote["caution"],
+                    danger: pacenote["danger"],
+                    widens: pacenote["widens"],
+                    tightens: pacenote["tightens"],
                     stage_id: stageID
                 }
             ])
@@ -33,7 +41,7 @@ export const SaveStageToDB = async (pacenotes: any[], stageID: number) => {
     const results = await Promise.all(SaveStage)
 }
 
-export const LoadStageFromDB = async (stageID: number) => {
+export const LoadStageFromDB = async (stageID: number | null) => {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
     try {
@@ -53,4 +61,35 @@ export const LoadStageFromDB = async (stageID: number) => {
         console.error("Error loading pacenotes:", error)
         return null
     }
+}
+
+export const CreateNewStage = async () => {
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
+    var stageID = null
+    const {
+        data: { user }
+    } = await supabase.auth.getUser()
+    if (user) {
+        const { data, error } = await supabase
+            .from("stages")
+            .insert([
+                {
+                    name: "test stage",
+                    public: false,
+                    creator_id: user.id
+                }
+            ])
+            .select()
+
+        if (error) {
+            console.error("Error creating stage:", error)
+            return null // or handle the error appropriately
+        }
+        stageID = data[0]?.id;
+    } else {
+        console.error("No signed-in user")
+        // Handle the case when there's no signed-in user if needed
+    }
+    return stageID
 }
