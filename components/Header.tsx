@@ -37,15 +37,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{
-      height: '60px', // Default height
-      '@media (min-width:600px)': {
-        height: '80px', // Adjust the height for medium screens
-      },
-      '@media (min-width:960px)': {
-        height: '100px', // Adjust the height for large screens
-      },
-    }}>
+    <AppBar position="absolute">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
