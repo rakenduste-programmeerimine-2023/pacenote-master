@@ -23,7 +23,7 @@ interface Pacenote {
 
 const StageEditor: React.FC<StageEditorProps> = props => {
     const searchParams = useSearchParams()
-    const stageID = searchParams.get('stage')
+    let stageID = searchParams.get('stage') !== null ? Number(searchParams.get('stage')) : null;
 
     const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
 
@@ -60,7 +60,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
   }
 
     const HandleFinishButtonClick = async () => {
-        SaveStageToDB(pacenotes, Number(stageID))
+        SaveStageToDB(pacenotes, stageID)
     }
 
 
