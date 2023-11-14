@@ -1,86 +1,81 @@
-"use client";
+"use client"
 import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import PacenoteList from "@/components/StageEditor/PacenoteList"
-import React, { useState } from "react";
+import { SaveStageToDB, LoadStageFromDB } from "@/components/backend/StageEditor/beStageEditor"
+import React, { useState, useEffect } from "react"
+import { useSearchParams } from 'next/navigation'
+
+
+import Test from "@/components/backend/StageEditor/test"
 
 interface StageEditorProps {}
 
+interface Pacenote {
+  action: string;
+  cut: boolean;
+  dontcut: boolean;
+  caution: boolean;
+  danger: boolean;
+  widens: boolean;
+  tightens: boolean;
+  notes: string;
+}
+
 const StageEditor: React.FC<StageEditorProps> = props => {
+    const searchParams = useSearchParams()
+    const stageID = searchParams.get('stage')
 
-    const [pacenotes, setPacenotes] = useState([
-        {
-            Action: "R6",
-            Cut: true,
-            DontCut: false,
-            Caution: false,
-            Danger: false,
-            Widens: false,
-            Tightens: true,
-            Notes: "Keep in"
-        },
-        {
-            Action: "L2",
-            Cut: false,
-            DontCut: true,
-            Caution: false,
-            Danger: false,
-            Widens: true,
-            Tightens: false,
-            Notes: "Tree inside"
-        },
-        {
-            Action: "L4",
-            Cut: false,
-            DontCut: false,
-            Caution: true,
-            Danger: true,
-            Widens: false,
-            Tightens: false,
-            Notes: "Uneven terrain"
+    const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
+
+    useEffect(() => {
+      document.title = 'Stage Editor';
+    }, []);
+
+    useEffect(() => {
+      const LoadStage = async () => {
+        const result = await LoadStageFromDB(Number(stageID));
+        if (result !== null){
+          setPacenotes(result as Pacenote[]);
         }
-    ]);
-
-    const handleFormSubmit = (formData: any) => {
-        // Add new pacenote using the AddNewPacenote function or directly modify the state
-        // Example using your existing AddNewPacenote function
-        const newPacenotes = AddNewPacenote(
-          formData.action,
-          formData.Cut,
-          formData.DontCut,
-          formData.Caution,
-          formData.Danger,
-          formData.Widens,
-          formData.Tightens,
-          formData.notes
-        );
-        // Update the pacenotes state
-        setPacenotes(newPacenotes);
       };
+      if (stageID !== null){
+        LoadStage();
+      }
+    }, [stageID])
 
-        // Function to add new pacenote
-        const AddNewPacenote = (action: string, cut: boolean, dontCut: boolean, caution: boolean, danger: boolean, widens: boolean, tightens: boolean, notes: string) => {
-            const newPacenotes = [
-                ...pacenotes,
-                {
-                    Action: action,
-                    Cut: cut,
-                    DontCut: dontCut,
-                    Caution: caution,
-                    Danger: danger,
-                    Widens: widens,
-                    Tightens: tightens,
-                    Notes: notes,
-                },
-            ];
-            return newPacenotes;
-        };
+    const HandleAddNewPacenoteToList = (newPacenoteFromForm: Pacenote) => {
+      setPacenotes(pacenotes => [
+          ...pacenotes,
+          {
+              action: newPacenoteFromForm.action,
+              cut: newPacenoteFromForm.cut,
+              dontcut: newPacenoteFromForm.dontcut,
+              caution: newPacenoteFromForm.caution,
+              danger: newPacenoteFromForm.danger,
+              widens: newPacenoteFromForm.widens,
+              tightens: newPacenoteFromForm.tightens,
+              notes: newPacenoteFromForm.notes
+          }
+      ]);
+  }
+
+    const HandleFinishButtonClick = async () => {
+        SaveStageToDB(pacenotes, Number(stageID))
+    }
+
+
 
     return (
         <div>
             <h1>Stage editor</h1>
-            <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes} />
-            <NewPacenoteForm  onSubmit={handleFormSubmit} />
-            <button type="submit">Finish</button>
+            {/*{testData && (
+              <pre>{testData}</pre>
+            )}*/}
+            <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
+            <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
+            <button type="submit" onClick={HandleFinishButtonClick}>
+                Finish
+            </button>
         </div>
     )
 }

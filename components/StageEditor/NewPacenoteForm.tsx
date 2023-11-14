@@ -9,12 +9,12 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
       action: '',
       notes: '',
-      Cut: false,
-      DontCut: false,
-      Caution: false,
-      Danger: false,
-      Tightens: false,
-      Widens: false,
+      cut: false,
+      dontcut: false,
+      caution: false,
+      danger: false,
+      tightens: false,
+      widens: false,
     });
   
     // Handle form submission
@@ -27,12 +27,12 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
         setFormData({
           action: '',
           notes: '',
-          Cut: false,
-          DontCut: false,
-          Caution: false,
-          Danger: false,
-          Tightens: false,
-          Widens: false,
+          cut: false,
+          dontcut: false,
+          caution: false,
+          danger: false,
+          tightens: false,
+          widens: false,
         });
     };
 
@@ -77,16 +77,16 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
             <label><input type="radio" name="action" value="Twisting" checked={formData.action === 'Twisting'} onChange={(e) => setFormData({ ...formData, action: e.target.value })}/> Twisting</label>
             <label><input type="radio" name="action" value="Watersplash" checked={formData.action === 'Watersplash'} onChange={(e) => setFormData({ ...formData, action: e.target.value })}/> Watersplash</label>
 
-            {/* Notes */}
+            {/* notes */}
             <label>Additional notes: <input type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
             
             {/* Modifiers */}
-            <label><input type="checkbox" name="Cut" value="true" checked={formData.Cut} onChange={(e) => setFormData({ ...formData, Cut: e.target.checked })} /> Cut</label>
-            <label><input type="checkbox" name="DontCut" value="true" checked={formData.DontCut} onChange={(e) => setFormData({ ...formData, DontCut: e.target.checked })} /> Don't cut</label>
-            <label><input type="checkbox" name="Caution" value="true" checked={formData.Caution} onChange={(e) => setFormData({ ...formData, Caution: e.target.checked })} /> Caution</label>
-            <label><input type="checkbox" name="Danger" value="true" checked={formData.Danger} onChange={(e) => setFormData({ ...formData, Danger: e.target.checked })} /> Danger</label>
-            <label><input type="checkbox" name="Tightens" value="true" checked={formData.Tightens} onChange={(e) => setFormData({ ...formData, Tightens: e.target.checked })} /> Tightens</label>
-            <label><input type="checkbox" name="Widens" value="true" checked={formData.Widens} onChange={(e) => setFormData({ ...formData, Widens: e.target.checked })} /> Widens</label>
+            <label><input type="checkbox" name="cut" value="true" checked={formData.cut} onChange={(e) => setFormData({ ...formData, cut: e.target.checked })} /> cut</label>
+            <label><input type="checkbox" name="dontcut" value="true" checked={formData.dontcut} onChange={(e) => setFormData({ ...formData, dontcut: e.target.checked })} /> Don't cut</label>
+            <label><input type="checkbox" name="caution" value="true" checked={formData.caution} onChange={(e) => setFormData({ ...formData, caution: e.target.checked })} /> caution</label>
+            <label><input type="checkbox" name="danger" value="true" checked={formData.danger} onChange={(e) => setFormData({ ...formData, danger: e.target.checked })} /> danger</label>
+            <label><input type="checkbox" name="tightens" value="true" checked={formData.tightens} onChange={(e) => setFormData({ ...formData, tightens: e.target.checked })} /> tightens</label>
+            <label><input type="checkbox" name="widens" value="true" checked={formData.widens} onChange={(e) => setFormData({ ...formData, widens: e.target.checked })} /> widens</label>
   
             {/* Submit */}
             <button type="submit" disabled={!isRadioSelected}>Add</button>
