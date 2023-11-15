@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 
-
     interface PacenoteListProps {
         pacenotes: {
             action: string;
