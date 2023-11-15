@@ -4,6 +4,7 @@ import PacenoteList from "@/components/StageEditor/PacenoteList"
 import { SaveStageToDB, LoadStageFromDB } from "@/components/backend/StageEditor/beStageEditor"
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
+import Link from "next/link"
 
 
 import Test from "@/components/backend/StageEditor/test"
@@ -60,7 +61,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
   }
 
     const HandleFinishButtonClick = async () => {
-        SaveStageToDB(pacenotes, stageID)
+        await SaveStageToDB(pacenotes, stageID)
     }
 
 
@@ -73,9 +74,11 @@ const StageEditor: React.FC<StageEditorProps> = props => {
             )}*/}
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
             <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
+            <Link href={{ pathname: "/stages"}}>
             <button type="submit" onClick={HandleFinishButtonClick}>
                 Finish
             </button>
+            </Link>
         </div>
     )
 }
