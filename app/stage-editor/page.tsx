@@ -6,9 +6,6 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link"
 
-
-import Test from "@/components/backend/StageEditor/test"
-
 interface StageEditorProps {}
 
 interface Pacenote {
@@ -63,15 +60,10 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     const HandleFinishButtonClick = async () => {
         await SaveStageToDB(pacenotes, stageID)
     }
-
-
-
+    
     return (
         <div>
             <h1>Stage editor</h1>
-            {/*{testData && (
-              <pre>{testData}</pre>
-            )}*/}
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
             <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
             <Link href={{ pathname: "/stages"}}>
