@@ -43,6 +43,9 @@ const Stages: React.FC<StagesProps> = (props) => {
                             <Link href={{ pathname: "/view-stage", query: { stage: stage.id } }}>
                             <span>{stage.name} </span>
                             </Link>
+                            <Link href={{ pathname: "/stage-editor", query: { stage: stage.id } }}>
+                            <button>Edit stage </button>
+                            </Link>
                             <button onClick={() => handleDelete(index)}>Delete</button>
                         </div>
                     </li>
