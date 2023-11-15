@@ -40,7 +40,7 @@ const Stages: React.FC<StagesProps> = (props) => {
                 {stages?.map((stage, index) => (
                     <li key={index}>
                         <div>
-                            <Link href={{ pathname: "/stage-editor", query: { stage: stage.id } }}>
+                            <Link href={{ pathname: "/view-stage", query: { stage: stage.id } }}>
                             <span>{stage.name} </span>
                             </Link>
                             <button onClick={() => handleDelete(index)}>Delete</button>
