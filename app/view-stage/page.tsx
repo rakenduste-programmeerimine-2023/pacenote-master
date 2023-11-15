@@ -32,13 +32,14 @@ const ReadStage: React.FC<ReadStageProps> = props => {
         const LoadStage = async () => {
             const result = await LoadStageFromDB(Number(stageID))
             if (result !== null) {
-                stageName = result.stageName;
                 setPacenotes(result.pacenotes);
+                setStageName(result.stageName);
+                document.title = String(result.stageName);
             }
-        }
+        };
+
         if (stageID !== null) {
-            LoadStage()
-            document.title = String(stageName)
+            LoadStage();
         }
     }, [stageID])
 
