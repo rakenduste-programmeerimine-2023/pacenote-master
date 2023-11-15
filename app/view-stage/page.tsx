@@ -63,7 +63,7 @@ const ReadStage: React.FC<ReadStageProps> = props => {
         <div>
             <h1>{stageName}</h1>
             <ul>
-                {pacenotes.map((pacenote, index) => (
+                {displayedPacenotes.map((pacenote, index) => (
                     <li key={index}>
                         <span>{pacenote.action} </span>
                         <input type="checkbox" checked={pacenote.cut} readOnly /> 
