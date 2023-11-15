@@ -52,6 +52,12 @@ import React, { useState } from "react";
         setPacenotes(newItems);
     };
 
+    const handleDelete = (index: number) => {
+        const newItems = [...pacenotes];
+        newItems.splice(index, 1);
+        setPacenotes(newItems);
+      };
+
     return (
         <div>
             <ul>
@@ -71,6 +77,7 @@ import React, { useState } from "react";
                         <input type="checkbox" checked={pacenote.widens} readOnly /> 
                         <input type="checkbox" checked={pacenote.tightens} readOnly /> 
                         <span>{pacenote.notes} </span>
+                        <button onClick={() => handleDelete(index)}>Delete</button>
                     </li>
                 ))}
             </ul>
