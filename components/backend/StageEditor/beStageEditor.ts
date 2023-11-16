@@ -9,14 +9,14 @@ export const SaveStageToDB = async (
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
-    if (stageID === null){
-        stageID = await CreateNewStage();
+    if (stageID === null) {
+        stageID = await CreateNewStage()
     } else {
-        await DeletePacenotesFromStage(stageID);
+        await DeletePacenotesFromStage(stageID)
     }
 
     const SaveStage = pacenotes.map(async (pacenote, index) => {
-        const order = index + 1;
+        const order = index + 1
         const { data, error } = await supabase
             .from("pacenotes")
             .insert([
@@ -67,6 +67,27 @@ export const LoadStageFromDB = async (stageID: number | null) => {
     }
 }
 
+export const LoadStageName = async (stageID: number | null) => {
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
+    try {
+        const { data: stageName, error } = await supabase
+            .from("stages")
+            .select("*")
+            .eq("id", stageID)
+
+        if (error) {
+            console.error("Error loading stage name:", error)
+            return null
+        }
+        console.log("Stage name: ", stageName)
+        return stageName
+    } catch (error) {
+        console.error("Error loading stage name:", error)
+        return null
+    }
+}
+
 export const CreateNewStage = async () => {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -90,7 +111,7 @@ export const CreateNewStage = async () => {
             console.error("Error creating stage:", error)
             return null // or handle the error appropriately
         }
-        stageID = data[0]?.id;
+        stageID = data[0]?.id
     } else {
         console.error("No signed-in user")
         // Handle the case when there's no signed-in user if needed
@@ -99,22 +120,22 @@ export const CreateNewStage = async () => {
 }
 
 export const DeletePacenotesFromStage = async (stageID: Number) => {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
 
     try {
         const { data, error } = await supabase
             .from("pacenotes")
             .delete()
-            .eq("stage_id", stageID);
+            .eq("stage_id", stageID)
 
         if (error) {
-            console.error("Error deleting pacenotes:", error);
-            return null;
+            console.error("Error deleting pacenotes:", error)
+            return null
         }
-        return data;
+        return data
     } catch (error) {
-        console.error("Error deleting pacenotes:", error);
-        return null;
+        console.error("Error deleting pacenotes:", error)
+        return null
     }
-};
+}
