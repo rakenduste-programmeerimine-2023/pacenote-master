@@ -28,7 +28,7 @@
     @apply text-black;
   }
   button {
-    @apply bg-white;
+    @apply text-black bg-white;
   }
 }
 
