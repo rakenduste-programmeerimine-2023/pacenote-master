@@ -4,7 +4,8 @@ import { cookies } from "next/headers"
 
 export const SaveStageToDB = async (
     pacenotes: any[],
-    stageID: number | null
+    stageID: number | null,
+    stageName: string | null
 ) => {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -41,8 +42,23 @@ export const SaveStageToDB = async (
         }
         return data
     })
+
     // Wait for all insert operations to complete
     const results = await Promise.all(SaveStage)
+
+        // Update stage name
+    const { data: updateData, error: updateError } = await supabase
+        .from("stages")
+        .update({ name: stageName })
+        .eq("id", stageID);
+
+    // Handle errors or return updateData as needed
+    if (updateError) {
+        console.error("Error updating stage name:", updateError);
+        return null;
+    }
+
+    return { pacenotes: results, stageUpdate: updateData };
 }
 
 export const LoadStageFromDB = async (stageID: number | null) => {
@@ -80,7 +96,6 @@ export const LoadStageName = async (stageID: number | null) => {
             console.error("Error loading stage name:", error)
             return null
         }
-        console.log("Stage name: ", stageName)
         return stageName
     } catch (error) {
         console.error("Error loading stage name:", error)

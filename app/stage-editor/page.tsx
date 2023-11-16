@@ -61,13 +61,17 @@ const StageEditor: React.FC<StageEditorProps> = props => {
   }
 
     const HandleFinishButtonClick = async () => {
-        await SaveStageToDB(pacenotes, stageID)
+        await SaveStageToDB(pacenotes, stageID, stageName)
     }
     
     return (
         <div>
             <h1>Stage editor</h1>
-            <input type="text" value={stageName}></input>
+            <input
+            type="text"
+            value={stageName ?? ''}
+            onChange={(e) => setStageName(e.target.value)}
+        />
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
             <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
             <Link href={{ pathname: "/stages"}}>
