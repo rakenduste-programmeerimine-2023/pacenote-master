@@ -1,7 +1,7 @@
 "use client"
 import NewPacenoteForm from "@/components/StageEditor/NewPacenoteForm"
 import PacenoteList from "@/components/StageEditor/PacenoteList"
-import { SaveStageToDB, LoadStageFromDB } from "@/components/backend/StageEditor/beStageEditor"
+import { LoadStageName, SaveStageToDB, LoadStageFromDB } from "@/components/backend/StageEditor/beStageEditor"
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link"
@@ -24,6 +24,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     let stageID = searchParams.get('stage') !== null ? Number(searchParams.get('stage')) : null;
 
     const [pacenotes, setPacenotes] = useState<Array<Pacenote>>([]);
+    const [stageName, setStageName] = useState<string | null>(null);
 
     useEffect(() => {
       document.title = 'Stage Editor';
@@ -35,6 +36,8 @@ const StageEditor: React.FC<StageEditorProps> = props => {
         if (result !== null){
           setPacenotes(result as Pacenote[]);
         }
+        const loadedStageName = await LoadStageName(stageID);
+        setStageName(loadedStageName ? loadedStageName[0]?.name : null);
       };
       if (stageID !== null){
         LoadStage();
@@ -64,6 +67,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     return (
         <div>
             <h1>Stage editor</h1>
+            <input type="text" value={stageName}></input>
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
             <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
             <Link href={{ pathname: "/stages"}}>
