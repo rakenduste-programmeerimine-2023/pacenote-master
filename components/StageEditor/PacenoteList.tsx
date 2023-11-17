@@ -11,6 +11,7 @@ import React, { useState } from "react";
             widens: boolean;
             tightens: boolean;
             notes: string;
+            icon: string;
         }[];
         setPacenotes: React.Dispatch<
         React.SetStateAction<{
@@ -22,6 +23,7 @@ import React, { useState } from "react";
           widens: boolean;
           tightens: boolean;
           notes: string;
+          icon: string;
         }[]>
       >;
     }
@@ -68,6 +70,7 @@ import React, { useState } from "react";
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
+                        
                         <span>{pacenote.action} </span>
                         <input type="checkbox" checked={pacenote.cut} readOnly /> 
                         <input type="checkbox" checked={pacenote.dontcut} readOnly /> 
