@@ -1,0 +1,30 @@
+
+.icon-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon-form {
+    display: flex;
+    gap: 50px; /* Adjust the gap between sections */
+  }
+  
+  .icon-section {
+    max-width: 500px; /* Adjust the maximum width of each section as needed */
+  }
+
+  .icon-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between icons */
+  }
+
+  /* Style each icon container */
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+button[type="submit"] {
+  @apply text-black bg-white;
+}
