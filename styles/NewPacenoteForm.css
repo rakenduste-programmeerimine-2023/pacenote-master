@@ -5,12 +5,12 @@
   }
 
   .icon-form {
-    display: flex;
-    gap: 50px; /* Adjust the gap between sections */
+  display: flex;
+  gap: 75px; /* Adjust the gap between sections */
   }
   
   .icon-section {
-    max-width: 500px; /* Adjust the maximum width of each section as needed */
+    max-width: 400px; /* Adjust the maximum width of each section as needed */
   }
 
   .icon-row {
@@ -26,5 +26,15 @@
 }
 
 button[type="submit"] {
-  @apply text-black bg-white;
+  color: black;
+  background-color: white;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px; /* Optional: Add padding for better visibility */
+  border-top: 1px solid #ccc; /* Optional: Add a border at the top of the footer */
 }

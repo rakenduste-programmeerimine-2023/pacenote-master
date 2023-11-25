@@ -1,0 +1,22 @@
+.pacenote-list-container {
+    max-height: 600px; /* Set a maximum height for the list container */
+    overflow-y: auto; /* Enable vertical scrolling if the content exceeds the container height */
+    /* border: 1px solid #ccc;  Optional: Add a border for clarity */
+  }
+
+  .pacenote-list-container ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .pacenote-list-container li {
+    display: flex; /* Set display to flex */
+    align-items: center;
+    padding: 10px; /* Add padding to create spacing between items */
+  }
+  
+  /*.icon-image {
+    width: 40px;  Adjust the width of the icons 
+    height: 40px;  Adjust the height of the icons 
+    margin-right: 10px;  Add margin to create spacing between icons 
+  }*/
