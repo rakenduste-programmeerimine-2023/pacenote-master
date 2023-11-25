@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import '@/styles/PacenoteList.css';
 
     interface PacenoteListProps {
         pacenotes: {
@@ -11,7 +12,7 @@ import React, { useState } from "react";
             widens: boolean;
             tightens: boolean;
             notes: string;
-            icon: string;
+            icon: '';
         }[];
         setPacenotes: React.Dispatch<
         React.SetStateAction<{
@@ -23,7 +24,7 @@ import React, { useState } from "react";
           widens: boolean;
           tightens: boolean;
           notes: string;
-          icon: string;
+          icon: '';
         }[]>
       >;
     }
@@ -59,8 +60,12 @@ import React, { useState } from "react";
         setPacenotes(newItems);
       };
 
+      const iconDirectory = '/PacenoteIcons/';
+
+      
+
     return (
-        <div>
+        <div className="pacenote-list-container">
             <ul>
                 {pacenotes.map((pacenote, index) => (
                     <li
@@ -70,15 +75,17 @@ import React, { useState } from "react";
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
-                        
+                        <label><img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
                         <span>{pacenote.action} </span>
-                        <input type="checkbox" checked={pacenote.cut} readOnly /> 
-                        <input type="checkbox" checked={pacenote.dontcut} readOnly /> 
-                        <input type="checkbox" checked={pacenote.caution} readOnly /> 
-                        <input type="checkbox" checked={pacenote.danger} readOnly /> 
-                        <input type="checkbox" checked={pacenote.widens} readOnly /> 
-                        <input type="checkbox" checked={pacenote.tightens} readOnly /> 
+                        {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
+                        {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
+                        {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" />}
+                        {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" />}
+                        {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" />}
+                        {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" />}
+                         
                         <span>{pacenote.notes} </span>
+                        </label>
                         <button onClick={() => handleDelete(index)}>Delete</button>
                     </li>
                 ))}
