@@ -17,7 +17,6 @@ interface Pacenote {
   widens: boolean;
   tightens: boolean;
   notes: string;
-  icon: '';
 }
 
 const StageEditor: React.FC<StageEditorProps> = props => {
@@ -57,7 +56,6 @@ const StageEditor: React.FC<StageEditorProps> = props => {
               widens: newPacenoteFromForm.widens,
               tightens: newPacenoteFromForm.tightens,
               notes: newPacenoteFromForm.notes,
-              icon: newPacenoteFromForm.icon
           }
       ]);
   }
