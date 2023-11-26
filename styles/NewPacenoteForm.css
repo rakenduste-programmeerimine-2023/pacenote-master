@@ -20,21 +20,22 @@
   }
 
   /* Style each icon container */
-.icon-container {
-  display: flex;
-  align-items: center;
-}
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
 
-button[type="submit"] {
-  color: black;
-  background-color: white;
-}
+  button[type="submit"] {
+    color: black;
+    background-color: white;
+  }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px; /* Optional: Add padding for better visibility */
-  border-top: 1px solid #ccc; /* Optional: Add a border at the top of the footer */
-}
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* Optional: Add padding for better visibility */
+    border: 1px solid #ccc; /* Optional: Add a border at the top of the footer */
+    border-radius: 5px;
+  }

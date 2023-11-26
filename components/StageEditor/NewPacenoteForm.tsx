@@ -43,7 +43,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
   const isRadioSelected = Object.values(formData).some((value) => typeof value === 'string' && value !== '');
   
   return (
-    <div>
+    <div className='footer'>
         <form onSubmit={handleSubmit} className="icon-form">
             {/* Left turns */}
             <div className="icon-section">
