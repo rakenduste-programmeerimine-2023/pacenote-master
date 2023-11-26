@@ -1,22 +1,33 @@
 .pacenote-list-container {
     max-height: 600px; /* Set a maximum height for the list container */
     overflow-y: auto; /* Enable vertical scrolling if the content exceeds the container height */
-    /* border: 1px solid #ccc;  Optional: Add a border for clarity */
   }
 
   .pacenote-list-container ul {
+    list-style-type: none;
     padding: 0;
-    list-style: none;
   }
   
   .pacenote-list-container li {
-    display: flex; /* Set display to flex */
+    display: flex;
     align-items: center;
-    padding: 10px; /* Add padding to create spacing between items */
+    justify-content: space-between;
+    padding: 10px;
+    margin: 5px; 
+    border: 1px solid #ccc;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-container img {
+    margin-right: 5px; /* Adjust the margin between icons */
   }
   
-  /*.icon-image {
-    width: 40px;  Adjust the width of the icons 
-    height: 40px;  Adjust the height of the icons 
-    margin-right: 10px;  Add margin to create spacing between icons 
-  }*/
+  .list-image {
+    width: 30px; 
+    height: 30px;
+    margin-right: 5px;
+  }  

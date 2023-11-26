@@ -72,18 +72,17 @@ import '@/styles/PacenoteList.css';
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
-                        <label><img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
-                        <span>{pacenote.action} </span>
-                        {pacenote.icon}
-                        {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
-                        {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
-                        {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" />}
-                        {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" />}
-                        {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" />}
-                        {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" />}
-                         
+                        <div className="icon-container">
+                            <img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
+                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
+                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
+                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" />}
+                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" />}
+                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" />}
+                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" />}
+                        </div>
+                        <span>{pacenote.action} </span> 
                         <span>{pacenote.notes} </span>
-                        </label>
                         <button onClick={() => handleDelete(index)}>Delete</button>
                     </li>
                 ))}
