@@ -75,7 +75,7 @@ import '@/styles/PacenoteList.css';
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
-                        <label><img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
+                        <label><img src={require(`/PacenoteIcons/${pacenote.icon}`)} alt={pacenote.action} className="icon-image" />
                         <span>{pacenote.action} </span>
                         {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
                         {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
