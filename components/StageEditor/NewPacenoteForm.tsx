@@ -99,12 +99,12 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
             <div className="icon-section">
               <h3>Modifiers</h3>
               <div className="icon-row">
-                <label><input type="checkbox" name="cut" value="true" checked={formData.cut} onChange={(e) => setFormData({ ...formData, cut: e.target.checked, icon: 'Cut' })} /> <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" /></label>
-                <label><input type="checkbox" name="dontcut" value="true" checked={formData.dontcut} onChange={(e) => setFormData({ ...formData, dontcut: e.target.checked, icon: 'Dontcut' })} /> <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" /></label>
-                <label><input type="checkbox" name="caution" value="true" checked={formData.caution} onChange={(e) => setFormData({ ...formData, caution: e.target.checked, icon: 'Caution' })} /> <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" /></label>
-                <label><input type="checkbox" name="danger" value="true" checked={formData.danger} onChange={(e) => setFormData({ ...formData, danger: e.target.checked, icon: 'Danger' })} /> <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" /></label>
-                <label><input type="checkbox" name="tightens" value="true" checked={formData.tightens} onChange={(e) => setFormData({ ...formData, tightens: e.target.checked, icon: 'Tightens' })} /> <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" /></label>
-                <label><input type="checkbox" name="widens" value="true" checked={formData.widens} onChange={(e) => setFormData({ ...formData, widens: e.target.checked, icon: 'Widens' })} /> <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" /></label>
+                <label><input type="checkbox" name="cut" value="true" checked={formData.cut} onChange={(e) => setFormData({ ...formData, cut: e.target.checked })} /> <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" /></label>
+                <label><input type="checkbox" name="dontcut" value="true" checked={formData.dontcut} onChange={(e) => setFormData({ ...formData, dontcut: e.target.checked })} /> <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" /></label>
+                <label><input type="checkbox" name="caution" value="true" checked={formData.caution} onChange={(e) => setFormData({ ...formData, caution: e.target.checked })} /> <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" /></label>
+                <label><input type="checkbox" name="danger" value="true" checked={formData.danger} onChange={(e) => setFormData({ ...formData, danger: e.target.checked })} /> <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" /></label>
+                <label><input type="checkbox" name="tightens" value="true" checked={formData.tightens} onChange={(e) => setFormData({ ...formData, tightens: e.target.checked })} /> <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" /></label>
+                <label><input type="checkbox" name="widens" value="true" checked={formData.widens} onChange={(e) => setFormData({ ...formData, widens: e.target.checked })} /> <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" /></label>
                 </div>
             </div>
             {/* Submit */}
