@@ -59,9 +59,6 @@ import '@/styles/PacenoteList.css';
         newItems.splice(index, 1);
         setPacenotes(newItems);
       };
-
-      const iconDirectory = '/PacenoteIcons/';
-
       
 
     return (
@@ -75,8 +72,9 @@ import '@/styles/PacenoteList.css';
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, index)}
                     >
-                        <label><img src={require(`/PacenoteIcons/${pacenote.icon}`)} alt={pacenote.action} className="icon-image" />
+                        <label><img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
                         <span>{pacenote.action} </span>
+                        {pacenote.icon}
                         {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
                         {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
                         {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" />}
