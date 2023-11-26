@@ -81,7 +81,9 @@ import '@/styles/PacenoteList.css';
                             {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="list-image" />}
                             {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="list-image" />}
                         </div> 
-                        <span>{pacenote.notes} </span>
+                        <div className="additional-note">
+                            <span>{pacenote.notes} </span>
+                        </div>
                         <button onClick={() => handleDelete(index)}>Delete</button>
                     </li>
                 ))}

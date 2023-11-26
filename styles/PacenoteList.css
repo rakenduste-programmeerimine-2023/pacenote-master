@@ -31,3 +31,8 @@
     width: 40px; 
     height: 40px;
   }  
+
+  .additional-note {
+    margin-left: 20px;
+    /* Add any other styles you need for the additional note */
+  }
