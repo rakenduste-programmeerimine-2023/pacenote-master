@@ -75,12 +75,12 @@ const StageEditor: React.FC<StageEditorProps> = props => {
             onChange={(e) => setStageName(e.target.value)}
         />
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
-            <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
             <Link href={{ pathname: "/stages"}}>
             <button type="submit" onClick={HandleFinishButtonClick}>
                 Finish
             </button>
             </Link>
+            <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
         </div>
     )
 }
