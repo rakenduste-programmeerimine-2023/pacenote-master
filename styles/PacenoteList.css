@@ -15,6 +15,7 @@
     padding: 10px;
     margin: 5px; 
     border: 1px solid #ccc;
+    border-radius: 5px;
   }
 
   .icon-container {
@@ -27,7 +28,6 @@
   }
   
   .list-image {
-    width: 30px; 
-    height: 30px;
-    margin-right: 5px;
+    width: 40px; 
+    height: 40px;
   }  

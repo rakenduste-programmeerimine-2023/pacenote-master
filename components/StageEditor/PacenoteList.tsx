@@ -73,15 +73,14 @@ import '@/styles/PacenoteList.css';
                         onDrop={(e) => handleDrop(e, index)}
                     >
                         <div className="icon-container">
-                            <img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="icon-image" />
-                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="icon-image" />}
-                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="icon-image" />}
-                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="icon-image" />}
-                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="icon-image" />}
-                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="icon-image" />}
-                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="icon-image" />}
-                        </div>
-                        <span>{pacenote.action} </span> 
+                            <img src={`/PacenoteIcons/${pacenote.icon}`} alt={pacenote.action} className="list-image" />
+                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="list-image" />}
+                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="list-image" />}
+                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="list-image" />}
+                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="list-image" />}
+                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="list-image" />}
+                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="list-image" />}
+                        </div> 
                         <span>{pacenote.notes} </span>
                         <button onClick={() => handleDelete(index)}>Delete</button>
                     </li>
