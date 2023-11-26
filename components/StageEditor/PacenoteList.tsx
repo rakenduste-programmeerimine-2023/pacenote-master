@@ -12,7 +12,6 @@ import '@/styles/PacenoteList.css';
             widens: boolean;
             tightens: boolean;
             notes: string;
-            icon: '';
         }[];
         setPacenotes: React.Dispatch<
         React.SetStateAction<{
@@ -24,7 +23,6 @@ import '@/styles/PacenoteList.css';
           widens: boolean;
           tightens: boolean;
           notes: string;
-          icon: '';
         }[]>
       >;
     }
