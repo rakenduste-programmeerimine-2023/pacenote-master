@@ -67,7 +67,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     }
     
     return (
-        <div>
+        <div style={{ width: '100%' }}>
             <h1>Stage editor</h1>
             <input
             type="text"
