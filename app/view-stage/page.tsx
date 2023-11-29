@@ -60,19 +60,23 @@ const ReadStage: React.FC<ReadStageProps> = props => {
             setCurrentGroup(Math.min(currentGroup + 1, pacenotes.length - 3));
         };
 
+        const getPacenoteIcon = (action: string) => {
+            return `/PacenoteIcons/${action}.png`;
+          };
+
     return (
         <div>
             <h1>{stageName}</h1>
             <ul>
                 {displayedPacenotes.map((pacenote, index) => (
                     <li key={index}>
-                        <span>{pacenote.action} </span>
-                        <input type="checkbox" checked={pacenote.cut} readOnly /> 
-                        <input type="checkbox" checked={pacenote.dontcut} readOnly /> 
-                        <input type="checkbox" checked={pacenote.caution} readOnly /> 
-                        <input type="checkbox" checked={pacenote.danger} readOnly /> 
-                        <input type="checkbox" checked={pacenote.widens} readOnly /> 
-                        <input type="checkbox" checked={pacenote.tightens} readOnly /> 
+                        <img src={getPacenoteIcon(pacenote.action)} alt={pacenote.action} className="pacenote-icon" />
+                        {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="view-image" />}
+                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="view-image" />}
+                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="view-image" />}
+                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="view-image" />}
+                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="view-image" />}
+                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="view-image" />}
                         <span>{pacenote.notes} </span>
                     </li>
                 ))}
