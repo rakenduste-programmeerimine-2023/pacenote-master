@@ -70,8 +70,8 @@ const ReadStage: React.FC<ReadStageProps> = props => {
             <ul>
                 {displayedPacenotes.map((pacenote, index) => (
                     <li key={index}>
-                        <img src={getPacenoteIcon(pacenote.action)} alt={pacenote.action} className="pacenote-icon" />
-                        {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="view-image" />}
+                        <img src={getPacenoteIcon(pacenote.action)} alt={pacenote.action} className="main-icon" />
+                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="view-image" />}
                             {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="view-image" />}
                             {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="view-image" />}
                             {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="view-image" />}
