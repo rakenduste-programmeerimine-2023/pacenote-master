@@ -1,9 +1,32 @@
-.view-image {
-    width: 60px; 
-    height: 60px;
-  }
+.pacenote-container {
+  flex-basis: calc(33.33% - 20px); /* Adjust the width of each pacenote container, considering margins */
+  display: flex;
+  flex-direction: column; /* Display children in a column layout */
+  align-items: center;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
 
-    .main-icon {
-        width: 100px;
-        height: 10px;
-    }
+.pacenote {
+  display: flex;
+  align-items: center;
+}
+
+.main-icon {
+  width: 200px;
+  height: 200px;
+}
+
+.modifiers {
+  display: flex;
+  flex-wrap: wrap; /* Allow the modifiers to wrap to the next row */
+  margin-top: 10px; /* Add space between pacenote and modifiers */
+}
+
+.mod-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 5px; /* Adjust the margin between modifier icons */
+}
