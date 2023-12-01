@@ -7,10 +7,18 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
+  justify-content: space-between;
+}
+
+.pacenote-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow pacenote containers to wrap to the next row */
+  justify-content: space-evenly; /* Adjust as needed */
 }
 
 .pacenote {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
