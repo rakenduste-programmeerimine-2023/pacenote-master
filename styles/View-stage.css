@@ -7,7 +7,6 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  justify-content: space-between;
 }
 
 .pacenote-row {
@@ -37,4 +36,10 @@
   width: 60px;
   height: 60px;
   margin-right: 5px; /* Adjust the margin between modifier icons */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly; /* Adjust the spacing between buttons */
+  margin-top: 10px; /* Add margin at the top for separation from pacenotes */
 }

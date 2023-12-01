@@ -86,8 +86,10 @@ const ReadStage: React.FC<ReadStageProps> = props => {
                     </div>
                 ))}
             </div>
-            <button onClick={handlePrevious}>Previous</button>
-            <button onClick={handleNext}>Next</button>
+            <div className="button-container">
+                <button onClick={handlePrevious}>Previous</button>
+                <button onClick={handleNext}>Next</button>
+            </div>
         </div>
     )
 }
