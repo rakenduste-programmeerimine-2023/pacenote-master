@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { LoadStageFromDB } from "@/components/backend/ViewStage/beViewStage"
+import "@/styles/View-stage.css";
 
 interface ReadStageProps {}
 interface Pacenote {
@@ -69,16 +70,20 @@ const ReadStage: React.FC<ReadStageProps> = props => {
             <h1>{stageName}</h1>
             <ul>
                 {displayedPacenotes.map((pacenote, index) => (
-                    <li key={index}>
-                        <img src={getPacenoteIcon(pacenote.action)} alt={pacenote.action} className="main-icon" />
-                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="view-image" />}
-                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="view-image" />}
-                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="view-image" />}
-                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="view-image" />}
-                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="view-image" />}
-                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="view-image" />}
-                        <span>{pacenote.notes} </span>
-                    </li>
+                    <div key={index} className="pacenote-container">
+                        <div className="pacenote">
+                            <img src={getPacenoteIcon(pacenote.action)} alt={pacenote.action} className="main-icon" />
+                        </div>
+                        <div className="modifiers">
+                            {pacenote.cut && <img src="/PacenoteIcons/Cut.png" alt="Cut" className="mod-image" />}
+                            {pacenote.dontcut && <img src="/PacenoteIcons/Dontcut.png" alt="Dontcut" className="mod-image" />}
+                            {pacenote.caution && <img src="/PacenoteIcons/Caution.png" alt="Caution" className="mod-image" />}
+                            {pacenote.danger && <img src="/PacenoteIcons/Danger.png" alt="Danger" className="mod-image" />}
+                            {pacenote.widens && <img src="/PacenoteIcons/Widens.png" alt="Widens" className="mod-image" />}
+                            {pacenote.tightens && <img src="/PacenoteIcons/Tightens.png" alt="Tightens" className="mod-image" />}
+                            <span>{pacenote.notes} </span>
+                        </div>
+                    </div>
                 ))}
             </ul>
             <button onClick={handlePrevious}>Previous</button>
