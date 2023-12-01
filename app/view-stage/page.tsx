@@ -68,7 +68,7 @@ const ReadStage: React.FC<ReadStageProps> = props => {
     return (
         <div>
             <h1>{stageName}</h1>
-            <ul>
+            <div className="pacenote-row">
                 {displayedPacenotes.map((pacenote, index) => (
                     <div key={index} className="pacenote-container">
                         <div className="pacenote">
@@ -85,7 +85,7 @@ const ReadStage: React.FC<ReadStageProps> = props => {
                         </div>
                     </div>
                 ))}
-            </ul>
+            </div>
             <button onClick={handlePrevious}>Previous</button>
             <button onClick={handleNext}>Next</button>
         </div>
