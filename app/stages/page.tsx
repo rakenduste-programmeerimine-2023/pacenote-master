@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { DeleteStageFromDB, LoadAllStagesFromDB } from "@/components/backend/Stages/beStages"
+import "@/styles/Stages.css";
 interface StagesProps {}
 
 const Stages: React.FC<StagesProps> = (props) => {
@@ -32,25 +33,31 @@ const Stages: React.FC<StagesProps> = (props) => {
 
     return (
         <div>
-            <h1>Stages</h1>
+        <h1>Stages</h1>
             <Link href={{ pathname: "/stage-editor"}}>
                 <button>New stage</button>
             </Link>
-            <ul>
+        <div className="stages-container">
+            <ul className="stage-list">
                 {stages?.map((stage, index) => (
                     <li key={index}>
-                        <div>
-                            <Link href={{ pathname: "/view-stage", query: { stage: stage.id } }}>
-                            <span>{stage.name} </span>
-                            </Link>
-                            <Link href={{ pathname: "/stage-editor", query: { stage: stage.id } }}>
-                            <button>Edit stage </button>
-                            </Link>
-                            <button onClick={() => handleDelete(index)}>Delete</button>
+                        <div className="stage-item">
+                            <div className="stage-name">
+                                <Link href={{ pathname: "/view-stage", query: { stage: stage.id } }}>
+                                    <span>{stage.name} </span>
+                                </Link>
+                            </div>
+                            <div className="stage-actions">
+                                <Link href={{ pathname: "/stage-editor", query: { stage: stage.id } }}>
+                                    <button>Edit stage </button>
+                                </Link>
+                                <button onClick={() => handleDelete(index)}>Delete</button>
+                            </div>
                         </div>
                     </li>
                 ))}
             </ul>
+        </div>
         </div>
     )
 }
