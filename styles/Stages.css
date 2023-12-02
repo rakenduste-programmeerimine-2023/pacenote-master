@@ -1,0 +1,30 @@
+.stages-container {
+    max-height: 800px;
+    overflow-y: auto;
+   
+  }
+
+  .stage-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+   }
+  
+  .stage-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 5%;
+    margin-bottom: 8px;
+    padding: 8px;
+  }
+  
+  .stage-name {
+    width: 90%; /* Adjust as needed */
+  }
+  
+  .stage-actions {
+    display: flex;
+    gap: 8px;
+  }
