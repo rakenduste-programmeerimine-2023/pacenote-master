@@ -32,7 +32,7 @@ const Stages: React.FC<StagesProps> = (props) => {
       };
 
     return (
-        <div>
+        <div className="list-width">
         <h1>Stages</h1>
             <Link href={{ pathname: "/stage-editor"}}>
                 <button>New stage</button>

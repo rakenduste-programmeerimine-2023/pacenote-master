@@ -1,13 +1,12 @@
 .stages-container {
     max-height: 800px;
     overflow-y: auto;
-   
+    width: 100%;  
   }
 
   .stage-list {
     list-style-type: none;
     padding: 0;
-    width: 100%;
    }
   
   .stage-item {
@@ -15,16 +14,20 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid #ddd;
-    border-radius: 5%;
+    border-radius: 5px;
     margin-bottom: 8px;
     padding: 8px;
   }
   
   .stage-name {
-    width: 90%; /* Adjust as needed */
+    padding: 8px;
   }
   
   .stage-actions {
     display: flex;
     gap: 8px;
+  }
+
+  .list-width {
+    width: 80%;
   }
