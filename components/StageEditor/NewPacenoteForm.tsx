@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '@/styles/NewPacenoteForm.css';
 import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 interface NewPacenoteFormProps {
   onSubmit: (formData: any) => void;
@@ -92,7 +94,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
               </div>
             </div>
             {/* notes */}
-            <label>Additional notes: <input type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
+            <label>Additional notes: <TextField id="outlined-basic" label="Additional notes" variant='outlined' type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
             
             {/* Modifiers */}
             <div className="icon-section">
