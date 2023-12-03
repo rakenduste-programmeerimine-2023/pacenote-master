@@ -5,6 +5,7 @@ import { LoadStageName, SaveStageToDB, LoadStageFromDB } from "@/components/back
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link"
+import Button from '@mui/material/Button'
 
 interface StageEditorProps {}
 
@@ -74,9 +75,9 @@ const StageEditor: React.FC<StageEditorProps> = props => {
         />
             <PacenoteList pacenotes={pacenotes} setPacenotes={setPacenotes}/>
             <Link href={{ pathname: "/stages"}}>
-            <button type="submit" onClick={HandleFinishButtonClick}>
+            <Button variant="contained" type="submit" onClick={HandleFinishButtonClick}>
                 Finish
-            </button>
+            </Button>
             </Link>
             <NewPacenoteForm onSubmit={HandleAddNewPacenoteToList} />
         </div>

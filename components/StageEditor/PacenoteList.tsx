@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import '@/styles/PacenoteList.css';
+import Button from '@mui/material/Button'
 
     interface PacenoteListProps {
         pacenotes: {
@@ -83,7 +84,7 @@ import '@/styles/PacenoteList.css';
                             </div>
                         </div> 
                         
-                        <button onClick={() => handleDelete(index)}>Delete</button>
+                        <Button variant="outlined" onClick={() => handleDelete(index)}>Delete</Button>
                     </li>
                 ))}
             </ul>
