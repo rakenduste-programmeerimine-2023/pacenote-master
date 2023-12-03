@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import '@/styles/NewPacenoteForm.css';
+import Button from '@mui/material/Button'
 
 interface NewPacenoteFormProps {
   onSubmit: (formData: any) => void;
@@ -106,7 +107,7 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
                 </div>
             </div>
             {/* Submit */}
-            <button type="submit" disabled={!isRadioSelected}>Add</button>
+            <Button variant="contained" type="submit" disabled={!isRadioSelected}>Add</Button>
         </form>
     </div>
   );

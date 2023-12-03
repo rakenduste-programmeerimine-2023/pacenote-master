@@ -27,9 +27,7 @@
   input[type="text"] {
     @apply text-black;
   }
-  button {
-    @apply text-black bg-white;
-  }
+
 }
 
 .animate-in {

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
+import Button from '@mui/material/Button'
 import { DeleteStageFromDB, LoadAllStagesFromDB } from "@/components/backend/Stages/beStages"
 import "@/styles/Stages.css";
 interface StagesProps {}
@@ -35,7 +36,7 @@ const Stages: React.FC<StagesProps> = (props) => {
         <div className="list-width">
         <h1>Stages</h1>
             <Link href={{ pathname: "/stage-editor"}}>
-                <button>New stage</button>
+                <Button variant="contained">New stage</Button>
             </Link>
         <div className="stages-container">
             <ul className="stage-list">
@@ -49,9 +50,9 @@ const Stages: React.FC<StagesProps> = (props) => {
                             </div>
                             <div className="stage-actions">
                                 <Link href={{ pathname: "/stage-editor", query: { stage: stage.id } }}>
-                                    <button>Edit stage </button>
+                                    <Button variant="contained">Edit stage </Button>
                                 </Link>
-                                <button onClick={() => handleDelete(index)}>Delete</button>
+                                <Button variant="outlined" onClick={() => handleDelete(index)}>Delete</Button>
                             </div>
                         </div>
                     </li>

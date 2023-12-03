@@ -19,11 +19,6 @@
     gap: 20px; /* Adjust the gap between icons */
   }
 
-  button[type="submit"] {
-    color: black;
-    background-color: white;
-  }
-
   .footer {
     position: fixed;
     bottom: 0;

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { LoadStageFromDB } from "@/components/backend/ViewStage/beViewStage"
 import "@/styles/View-stage.css";
+import Button from '@mui/material/Button'
 
 interface ReadStageProps {}
 interface Pacenote {
@@ -87,8 +88,8 @@ const ReadStage: React.FC<ReadStageProps> = props => {
                 ))}
             </div>
             <div className="button-container">
-                <button onClick={handlePrevious}>Previous</button>
-                <button onClick={handleNext}>Next</button>
+                <Button variant="contained" onClick={handlePrevious}>Previous</Button>
+                <Button variant="contained" onClick={handleNext}>Next</Button>
             </div>
         </div>
     )
