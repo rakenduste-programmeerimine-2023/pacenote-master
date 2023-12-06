@@ -71,7 +71,8 @@ const StageEditor: React.FC<StageEditorProps> = props => {
         <div style={{ width: '100%' }}>
             <h1>Stage editor</h1>
             <TextField id="outlined-basic" label="Stage name" variant="outlined"
-            sx={{ m: 1, width: '20ch' ,'& input': { background: '#696969', border: '7px solid'},}}
+            InputLabelProps={{  style: {color: 'white'}, }}
+            inputProps={{ style: { color: 'white' } }}
             type="text"
             value={stageName ?? ''}
             onChange={(e) => setStageName(e.target.value)}
