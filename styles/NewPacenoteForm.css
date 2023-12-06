@@ -26,6 +26,5 @@
     width: 100%;
     padding: 10px; /* Optional: Add padding for better visibility */
     border: 1px solid #ccc; /* Optional: Add a border at the top of the footer */
-    border-radius: 5px;
-    background-color: black;
+    border-radius: 5px; 
   }

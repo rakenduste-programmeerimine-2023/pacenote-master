@@ -94,7 +94,9 @@ const NewPacenoteForm: React.FC<NewPacenoteFormProps> = ({ onSubmit }) => {
               </div>
             </div>
             {/* notes */}
-            <label>Additional notes: <TextField id="outlined-basic" label="Additional notes" variant='outlined' type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} /></label>
+            <label><TextField id="outlined-basic" label="Additional notes" color='primary' variant='outlined' type="text" name="notes"  value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} 
+            sx={{ m: 1, width: '25ch' ,'& input': { background: '#696969', border: '7px solid'},}}  
+            /></label>
             
             {/* Modifiers */}
             <div className="icon-section">
