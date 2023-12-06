@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link"
 import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
 
 interface StageEditorProps {}
@@ -69,7 +70,8 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     return (
         <div style={{ width: '100%' }}>
             <h1>Stage editor</h1>
-            <input
+            <TextField id="outlined-basic" label="Stage name" variant="outlined"
+            sx={{ m: 1, width: '20ch' ,'& input': { background: '#696969', border: '7px solid'},}}
             type="text"
             value={stageName ?? ''}
             onChange={(e) => setStageName(e.target.value)}
