@@ -66,7 +66,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     const HandleFinishButtonClick = async () => {
         await SaveStageToDB(pacenotes, stageID, stageName)
     }
-    
+
     return (
         <div style={{ width: '100%' }}>
             <h1>Stage editor</h1>
