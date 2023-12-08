@@ -2,10 +2,30 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
 import { LoadProfileData } from "@/components/backend/Profile/beProfile";
+import { CircularProgress, Avatar, Typography, Container, withStyles } from '@mui/material';
+import { Theme } from '@mui/system';
 
-interface ProfileProps {}
+const styles = (theme: Theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+    },
+    avatar: {
+      width: theme.spacing(10),
+      height: theme.spacing(10),
+      marginBottom: theme.spacing(2),
+    },
+  });
+
+interface ProfileProps {
+    classes: Record<string, string>;
+}
 
 export const Profile: React.FC<ProfileProps> = props => {
+    const { classes } = props;
     const searchParams = useSearchParams();
     let profileID = searchParams.get('id') || null;
     const [profileData, setProfileData] = useState<any>(null);
@@ -54,11 +74,15 @@ export const Profile: React.FC<ProfileProps> = props => {
     }
 
     return (
-        <div>
-            <p>Profile: {profileData[0].username}</p>
-            <p>Description: {profileData[0].description}</p>
-            <img src={profileData && profileData.length > 0 ? profileData[0].avatarURL.data.publicUrl : ""} alt="Avatar" />
-        </div>
+        <Container className={classes?.root}>
+      <Avatar
+        className={classes?.avatar}
+        alt="Avatar"
+        src={profileData && profileData.length > 0 ? profileData[0].avatarURL.data.publicUrl : ""}
+      />
+      <Typography variant="h5">Profile: {profileData[0].username}</Typography>
+      <Typography variant="body1">Description: {profileData[0].description}</Typography>
+    </Container>
     );
 };
 
