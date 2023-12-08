@@ -47,11 +47,11 @@ const Stages: React.FC<StagesProps> = (props) => {
     return (
         <div className="list-width">
             <h1>Stages</h1>
-            <Button variant="contained" onClick={() => setDrawerOpen(true)}>
-                Open Drawer
-            </Button>
 
-            <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+            <Drawer 
+                anchor="right" open={drawerOpen} 
+                onClose={() => setDrawerOpen(false)}
+            >
         <List>
           {drawerItems.map((item, index) => (
             <Link href={item.path} key={index}>
@@ -66,6 +66,11 @@ const Stages: React.FC<StagesProps> = (props) => {
             <Link href={{ pathname: "/stage-editor"}}>
                 <Button variant="contained">New stage</Button>
             </Link>
+
+            <Button variant="contained" onClick={() => setDrawerOpen(true)} style={{ marginLeft: '80%' }}>
+                Menu
+            </Button>
+
         <div className="stages-container">
             <ul className="stage-list">
                 {stages?.map((stage, index) => (
