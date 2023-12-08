@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
 import { LoadProfileData } from "@/components/backend/Profile/beProfile";
-import { CircularProgress, Avatar, Typography, Container, Theme, Box } from '@mui/material';
+import { Avatar, Typography, Theme, Box } from '@mui/material';
 
 
 const styles = (theme: Theme) => ({
@@ -10,13 +10,6 @@ const styles = (theme: Theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      height: '100vh',
-    },
-    avatar: {
-      width: theme.spacing(10),
-      height: theme.spacing(10),
-      marginBottom: theme.spacing(2),
     },
   });
 
@@ -76,7 +69,7 @@ export const Profile: React.FC<ProfileProps> = props => {
     return (
         <Box className={classes?.root}>
       <Avatar
-        className={classes?.avatar}
+        sx={{ width: 100, height: 100 }}
         alt="Avatar"
         src={profileData && profileData.length > 0 ? profileData[0].avatarURL.data.publicUrl : ""}
       />
