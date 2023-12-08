@@ -2,11 +2,17 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Button from '@mui/material/Button'
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { DeleteStageFromDB, LoadAllStagesFromDB } from "@/components/backend/Stages/beStages"
 import "@/styles/Stages.css";
+
 interface StagesProps {}
 
 const Stages: React.FC<StagesProps> = (props) => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
     const [stages, setStages] = useState<any[] | undefined>(undefined);
     useEffect(() => {
         document.title = "Stages"
@@ -32,9 +38,31 @@ const Stages: React.FC<StagesProps> = (props) => {
         setStages(newItems);
       };
 
+      const drawerItems = [
+        { label: 'Stages', path: '/stages' },
+        { label: 'Profile', path: '/profile' },
+        { label: 'New Stage', path: '/stage-editor' },
+      ];
+
     return (
         <div className="list-width">
-        <h1>Stages</h1>
+            <h1>Stages</h1>
+            <Button variant="contained" onClick={() => setDrawerOpen(true)}>
+                Open Drawer
+            </Button>
+
+            <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <List>
+          {drawerItems.map((item, index) => (
+            <Link href={item.path} key={index}>
+              <ListItem button onClick={() => setDrawerOpen(false)}>
+                <ListItemText primary={item.label} />
+              </ListItem>
+            </Link>
+          ))}
+        </List>
+      </Drawer>
+
             <Link href={{ pathname: "/stage-editor"}}>
                 <Button variant="contained">New stage</Button>
             </Link>
