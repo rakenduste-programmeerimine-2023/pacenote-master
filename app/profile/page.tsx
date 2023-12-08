@@ -73,8 +73,8 @@ export const Profile: React.FC<ProfileProps> = props => {
         alt="Avatar"
         src={profileData && profileData.length > 0 ? profileData[0].avatarURL.data.publicUrl : ""}
       />
-      <Typography variant="h5">Username: {profileData[0].username}</Typography>
-      <Typography variant="body1">Description: {profileData[0].description}</Typography>
+      <Typography variant="h5"> {profileData[0].username}</Typography>
+      <Typography variant="body1"> {profileData[0].description}</Typography>
     </Box>
     );
 };
