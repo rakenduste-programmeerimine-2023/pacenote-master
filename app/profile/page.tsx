@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
 import { LoadProfileData } from "@/components/backend/Profile/beProfile";
-import { CircularProgress, Avatar, Typography, Container, withStyles } from '@mui/material';
-import { Theme } from '@mui/system';
+import { CircularProgress, Avatar, Typography, Container, Theme, Box } from '@mui/material';
+
 
 const styles = (theme: Theme) => ({
     root: {
@@ -74,15 +74,15 @@ export const Profile: React.FC<ProfileProps> = props => {
     }
 
     return (
-        <Container className={classes?.root}>
+        <Box className={classes?.root}>
       <Avatar
         className={classes?.avatar}
         alt="Avatar"
         src={profileData && profileData.length > 0 ? profileData[0].avatarURL.data.publicUrl : ""}
       />
-      <Typography variant="h5">Profile: {profileData[0].username}</Typography>
+      <Typography variant="h5">Username: {profileData[0].username}</Typography>
       <Typography variant="body1">Description: {profileData[0].description}</Typography>
-    </Container>
+    </Box>
     );
 };
 
