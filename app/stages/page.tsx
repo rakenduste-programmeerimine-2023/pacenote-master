@@ -2,15 +2,12 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Button from "@mui/material/Button"
-import Drawer from "@mui/material/Drawer"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemText from "@mui/material/ListItemText"
 import {
     DeleteStageFromDB,
     LoadAllStagesFromDB
 } from "@/components/backend/Stages/beStages"
 import "@/styles/Stages.css"
+import SideDrawer from "@/components/SideDrawer"
 
 interface StagesProps {}
 
@@ -51,31 +48,11 @@ const Stages: React.FC<StagesProps> = props => {
         <div className="list-width">
             <h1>Stages</h1>
 
-            <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-            >
-                <List>
-                    {drawerItems.map((item, index) => (
-                        <Link
-                            href={item.path}
-                            key={index}
-                        >
-                            <ListItem
-                                button
-                                onClick={() => setDrawerOpen(false)}
-                            >
-                                <ListItemText primary={item.label} />
-                            </ListItem>
-                        </Link>
-                    ))}
-                </List>
-            </Drawer>
-
             <Link href={{ pathname: "/stage-editor" }}>
                 <Button variant="contained">New stage</Button>
             </Link>
+
+            <SideDrawer drawerItems={drawerItems} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
             <Button
                 variant="contained"
