@@ -10,11 +10,8 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import Button from "@mui/material/Button"
-import Drawer from "@mui/material/Drawer"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemText from "@mui/material/ListItemText"
 import TextField from "@mui/material/TextField"
+import SideDrawer from "@/components/SideDrawer"
 
 interface StageEditorProps {}
 
@@ -105,27 +102,9 @@ const StageEditor: React.FC<StageEditorProps> = props => {
             >
                 Menu
             </Button>
-            <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-            >
-                <List>
-                    {drawerItems.map((item, index) => (
-                        <Link
-                            href={item.path}
-                            key={index}
-                        >
-                            <ListItem
-                                button
-                                onClick={() => setDrawerOpen(false)}
-                            >
-                                <ListItemText primary={item.label} />
-                            </ListItem>
-                        </Link>
-                    ))}
-                </List>
-            </Drawer>
+
+            <SideDrawer drawerItems={drawerItems} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
             <PacenoteList
                 pacenotes={pacenotes}
                 setPacenotes={setPacenotes}
