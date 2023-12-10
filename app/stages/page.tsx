@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
-import { List } from "@mui/material"
 import Button from "@mui/material/Button"
 import {
     DeleteStageFromDB,
@@ -40,12 +39,6 @@ const Stages: React.FC<StagesProps> = props => {
         setStages(newItems)
     }
 
-    const drawerItems = [
-        { label: "Stages", path: "/stages" },
-        { label: "Profile", path: "/profile" },
-        { label: "New Stage", path: "/stage-editor" }
-    ]
-
     return (
         <div className="list-width">
             <h1>Stages</h1>
@@ -54,7 +47,7 @@ const Stages: React.FC<StagesProps> = props => {
                 <Button variant="contained">New stage</Button>
             </Link>
 
-            <SideDrawer drawerItems={drawerItems} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+            <SideDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
             <Button
                 variant="contained"

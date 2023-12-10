@@ -75,12 +75,6 @@ const StageEditor: React.FC<StageEditorProps> = props => {
         await SaveStageToDB(pacenotes, stageID, stageName)
     }
 
-    const drawerItems = [
-        { label: "Stages", path: "/stages" },
-        { label: "Profile", path: "/profile" },
-        { label: "New Stage", path: "/stage-editor" }
-    ]
-
     return (
         <div style={{ width: "100%" }}>
             <h1>Stage editor</h1>
@@ -103,7 +97,7 @@ const StageEditor: React.FC<StageEditorProps> = props => {
                 Menu
             </Button>
 
-            <SideDrawer drawerItems={drawerItems} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+            <SideDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
 
             <PacenoteList
                 pacenotes={pacenotes}
