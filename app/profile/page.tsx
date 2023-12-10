@@ -5,6 +5,7 @@ import { LoadProfileData } from "@/components/backend/Profile/beProfile"
 import { Avatar, Typography, Theme, Box } from "@mui/material"
 import Button from "@mui/material/Button"
 import SideDrawer from "@/components/SideDrawer"
+import { GetUserID } from "@/components/backend/beSideDrawer"
 
 const styles = (theme: Theme) => ({
     root: {
