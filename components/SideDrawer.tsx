@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Drawer from "@mui/material/Drawer"
 import List from "@mui/material/List"
 import Link from "next/link"
@@ -23,6 +23,24 @@ const SideDrawer: React.FC<SideDrawerProps> = ({
     onClose
 
 }) => {
+
+    const [userID, setUserID] = useState<string>("");
+
+    const SetSessionUserID = async () => {
+        try {
+            const userID = await GetUserID();
+            setUserID(userID);
+            console.log("UserID for sidebar: ", userID);
+        } catch (error) {
+            console.error("Error getting UserID:", error);
+        }
+    };
+
+
+    useEffect(() => {
+        SetSessionUserID();
+    }, []);
+
     return (
         <Drawer
             anchor="right"
@@ -33,7 +51,7 @@ const SideDrawer: React.FC<SideDrawerProps> = ({
                 <Link
                     href={{
                         pathname: "/profile",
-                        query: { id: GetUserID }
+                        query: { id: userID }
                     }}
                 >
                    <Button variant="contained">Profile</Button> 
