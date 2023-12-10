@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
+import { List } from "@mui/material"
 import Button from "@mui/material/Button"
 import {
     DeleteStageFromDB,
@@ -14,6 +15,7 @@ interface StagesProps {}
 const Stages: React.FC<StagesProps> = props => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     const [stages, setStages] = useState<any[] | undefined>(undefined)
+
     useEffect(() => {
         document.title = "Stages"
     }, [])
