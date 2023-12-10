@@ -6,19 +6,13 @@ import { GetUserID } from "./backend/beSideDrawer"
 import { Button } from "@mui/material"
 
 interface SideDrawerProps {
-    drawerItems: { label: string; path: string }[]
+    
     isOpen: boolean
     onClose: () => void
 }
 
-const drawerItems = [
-    { label: "Stages", path: "/stages" },
-    { label: "Profile", path: "/profile" },
-    { label: "New Stage", path: "/stage-editor" }
-]
-
 const SideDrawer: React.FC<SideDrawerProps> = ({
-    drawerItems,
+  
     isOpen,
     onClose
 

@@ -5,7 +5,6 @@ import { LoadProfileData } from "@/components/backend/Profile/beProfile"
 import { Avatar, Typography, Theme, Box } from "@mui/material"
 import Button from "@mui/material/Button"
 import SideDrawer from "@/components/SideDrawer"
-import { GetUserID } from "@/components/backend/beSideDrawer"
 
 const styles = (theme: Theme) => ({
     root: {
@@ -71,12 +70,6 @@ export const Profile: React.FC<ProfileProps> = props => {
         return <p>Error loading profile data</p>
     }
 
-    const drawerItems = [
-        { label: "Stages", path: "/stages" },
-        { label: "Profile", path: "/profile" },
-        { label: "New Stage", path: "/stage-editor" }
-    ]
-
     return (
         <Box className={classes?.root} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Avatar
@@ -102,7 +95,7 @@ export const Profile: React.FC<ProfileProps> = props => {
                     Menu
                 </Button>
             </div>
-            <SideDrawer drawerItems={drawerItems} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+            <SideDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
         </Box>
     )
 }
