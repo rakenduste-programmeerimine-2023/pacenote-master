@@ -1,6 +1,7 @@
 "use server"
 import { createClient } from "@/utils/supabase/server"
 import { cookies } from "next/headers"
+import axios from 'axios';
 
 /*export const LoadProfileData = async (profileID: string | null) => {
     if (profileID === null) {
@@ -34,8 +35,31 @@ import { cookies } from "next/headers"
     return userData;
 };*/
 
+export type GameDetails = {
+    // Define the properties you expect in the game details
+    name: string;
+    detailed_description: string;
+    // Add more properties as needed
+}
 
+const getSteamGameDetails = async (appId: string): Promise<GameDetails | null> => {
+    const apiUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
 
+    try {
+        const response = await axios.get<{ [key: string]: { success: boolean; data: GameDetails } }>(apiUrl);
+        const gameDetails = response.data[appId];
+
+        if (gameDetails.success) {
+            return gameDetails.data;
+        } else {
+            console.error('Steam API request was not successful:', gameDetails);
+            return null;
+        }
+    } catch (error) {
+        console.error('Error fetching Steam game details:', error);
+        return null;
+    }
+};
 
 export const LoadProfileData = async (profileID: string | null) => {
     if (profileID === null) {
@@ -49,7 +73,7 @@ export const LoadProfileData = async (profileID: string | null) => {
         data: { user }
     } = await supabase.auth.getUser();
 
-    let userData;
+    let userData: any[] = [];
 
     if (user) {
         const { data, error } = await supabase
@@ -76,6 +100,14 @@ export const LoadProfileData = async (profileID: string | null) => {
         }
     } else {
         console.error("No signed-in user");
+    }
+
+    const appId = '1849250'; // Replace with the desired app ID
+    const gameDetails = await getSteamGameDetails(appId);
+
+    if (gameDetails) {
+        // Do something with the gameDetails, e.g., add it to the userData object
+        userData[0].gameDetails = gameDetails;
     }
 
     return userData;

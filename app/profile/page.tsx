@@ -5,6 +5,7 @@ import { LoadProfileData } from "@/components/backend/Profile/beProfile"
 import { Avatar, Typography, Theme, Box } from "@mui/material"
 import Button from "@mui/material/Button"
 import SideDrawer from "@/components/SideDrawer"
+import { GameDetails } from "@/components/backend/Profile/beProfile"
 
 const styles = (theme: Theme) => ({
     root: {
@@ -13,6 +14,13 @@ const styles = (theme: Theme) => ({
         alignItems: "center"
     }
 })
+
+interface ProfileData {
+    avatarURL: string
+    username: string
+    description: string
+    gameDetails?: GameDetails // Add this property for game details
+}
 
 interface ProfileProps {
     classes: Record<string, string>
@@ -71,7 +79,14 @@ export const Profile: React.FC<ProfileProps> = props => {
     }
 
     return (
-        <Box className={classes?.root} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box
+            className={classes?.root}
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+            }}
+        >
             <Avatar
                 sx={{ width: 100, height: 100 }}
                 alt="Avatar"
@@ -95,7 +110,21 @@ export const Profile: React.FC<ProfileProps> = props => {
                     Menu
                 </Button>
             </div>
-            <SideDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+            <SideDrawer
+                isOpen={drawerOpen}
+                onClose={() => setDrawerOpen(false)}
+            />
+            {profileData[0].gameDetails && (
+                <div>
+                    <h3>Game Details</h3>
+                    <p>Title: {profileData[0].gameDetails.name}</p>
+                    <p>
+                        Description:{" "}
+                        {profileData[0].gameDetails.detailed_description}
+                    </p>
+                    {/* Add more details as needed */}
+                </div>
+            )}
         </Box>
     )
 }
