@@ -38,8 +38,10 @@ import axios from 'axios';
 export type GameDetails = {
     // Define the properties you expect in the game details
     name: string;
-    detailed_description: string;
-    // Add more properties as needed
+    short_description: string;
+    pc_requirements: {
+        recommended: string;
+    }
 }
 
 const getSteamGameDetails = async (appId: string): Promise<GameDetails | null> => {

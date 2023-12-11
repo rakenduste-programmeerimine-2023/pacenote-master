@@ -105,7 +105,6 @@ export const Profile: React.FC<ProfileProps> = props => {
                 <Button
                     variant="contained"
                     onClick={() => setDrawerOpen(true)}
-                    style={{ marginLeft: "80%" }}
                 >
                     Menu
                 </Button>
@@ -115,13 +114,14 @@ export const Profile: React.FC<ProfileProps> = props => {
                 onClose={() => setDrawerOpen(false)}
             />
             {profileData[0].gameDetails && (
-                <div>
+                <div style={{ width: '80%', margin: '100px auto 0' }}>
                     <h3>Game Details</h3>
                     <p>Title: {profileData[0].gameDetails.name}</p>
                     <p>
                         Description:{" "}
-                        {profileData[0].gameDetails.detailed_description}
+                        {profileData[0].gameDetails.short_description}
                     </p>
+                    <p>Recommended requirements: {profileData[0].gameDetails.recommended}</p>
                     {/* Add more details as needed */}
                 </div>
             )}
