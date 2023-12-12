@@ -42,6 +42,7 @@ export type GameDetails = {
     pc_requirements: {
         recommended: string;
     }
+    header_image: string;
 }
 
 const getSteamGameDetails = async (appId: string): Promise<GameDetails | null> => {
