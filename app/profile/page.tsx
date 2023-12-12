@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
 import { LoadProfileData } from "@/components/backend/Profile/beProfile";
+import { CheckAuth } from "@/components/backend/beAuth";
 
 interface ProfileProps {}
 
@@ -10,6 +11,16 @@ export const Profile: React.FC<ProfileProps> = props => {
     let profileID = searchParams.get('id') || null;
     const [profileData, setProfileData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const checkAuthentication = async () => {
+          const isAuthenticated = await CheckAuth();
+          if (!isAuthenticated) {
+            window.location.href = '/login';
+          }
+        };
+        checkAuthentication();
+    }, []);
 
     useEffect(() => {
         document.title = 'Stage Editor';

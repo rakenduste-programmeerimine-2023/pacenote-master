@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { DeleteStageFromDB, LoadAllStagesFromDB } from "@/components/backend/Stages/beStages"
+import { CheckAuth } from "@/components/backend/beAuth"
+import { isatty } from "tty"
 interface StagesProps {}
 
 const Stages: React.FC<StagesProps> = (props) => {
@@ -9,6 +11,16 @@ const Stages: React.FC<StagesProps> = (props) => {
     useEffect(() => {
         document.title = "Stages"
     }, [])
+    useEffect(() => {
+      const checkAuthentication = async () => {
+        const isAuthenticated = await CheckAuth();
+        console.log(isAuthenticated)
+        if (!isAuthenticated) {
+          window.location.href = '/login';
+        }
+      };
+      checkAuthentication();
+  }, []);
 
     useEffect(() => {
         const LoadAllStages = async () => {

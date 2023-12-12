@@ -5,6 +5,7 @@ import { LoadStageName, SaveStageToDB, LoadStageFromDB } from "@/components/back
 import React, { useState, useEffect } from "react"
 import { useSearchParams } from 'next/navigation'
 import Link from "next/link"
+import { CheckAuth } from "@/components/backend/beAuth"
 
 interface StageEditorProps {}
 
@@ -29,6 +30,15 @@ const StageEditor: React.FC<StageEditorProps> = props => {
     useEffect(() => {
       document.title = 'Stage Editor';
     }, []);
+    useEffect(() => {
+      const checkAuthentication = async () => {
+        const isAuthenticated = await CheckAuth();
+        if (!isAuthenticated) {
+          window.location.href = '/login';
+        }
+      };
+      checkAuthentication();
+  }, []);
 
     useEffect(() => {
       const LoadStage = async () => {

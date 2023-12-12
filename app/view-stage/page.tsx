@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { LoadStageFromDB } from "@/components/backend/ViewStage/beViewStage"
 import "@/styles/View-stage.css";
+import { CheckAuth } from "@/components/backend/beAuth";
 
 interface ReadStageProps {}
 interface Pacenote {
@@ -27,7 +28,9 @@ const ReadStage: React.FC<ReadStageProps> = props => {
     const [currentGroup, setCurrentGroup] = useState<number>(0);
     let [stageName, setStageName] = useState<string | null>(null);
 
-
+    useEffect(() => {
+        CheckAuth();
+    });
 
     useEffect(() => {
         const LoadStage = async () => {

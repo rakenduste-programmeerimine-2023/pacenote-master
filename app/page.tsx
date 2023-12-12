@@ -1,11 +1,14 @@
-import React from 'react';
-
+"use client"
+import React, { useEffect } from 'react';
 interface IndexPage {
 
 }
 
 const IndexPage: React.FC<IndexPage> = (props) => {
-
+  useEffect(() => {
+    // Redirect to /stages
+    window.location.href = '/stages';
+  }, []);
 
   return (
     <div>
