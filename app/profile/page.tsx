@@ -114,14 +114,20 @@ export const Profile: React.FC<ProfileProps> = props => {
                 onClose={() => setDrawerOpen(false)}
             />
             {profileData[0].gameDetails && (
-                <div style={{ width: '80%', margin: '100px auto 0' }}>
+                <div style={{ width: "80%", margin: "100px auto 0" }}>
                     <h3>Game Details</h3>
                     <p>Title: {profileData[0].gameDetails.name}</p>
                     <p>
                         Description:{" "}
                         {profileData[0].gameDetails.short_description}
                     </p>
-                    <p>Recommended requirements: {profileData[0].gameDetails.recommended}</p>
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: profileData[0].gameDetails.pc_requirements
+                                .recommended
+                        }}
+                    />
+                    <img src={profileData[0].gameDetails.header_image} />
                     {/* Add more details as needed */}
                 </div>
             )}
